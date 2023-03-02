@@ -1,0 +1,24 @@
+@model LoginModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+  <h1 class="text-center">Enter your details here to login</h1>
+    @using (Html.BeginForm("login", "Home", FormMethod.Post))
+    {
+         <div>
+           
+            Email : @Html.TextBoxFor(x=>x.Email, new { @class = "form-control text-danger", placeholder = "Enter your email id" })
+            @Html.ValidationMessageFor(x => x.Email)
+        
+        </div>
+
+         <div>
+          
+            Password : @Html.TextBoxFor(x=>x.Password, new { @class = "form-control text-danger", placeholder = "Enter your password here" })
+            @Html.ValidationMessageFor(x => x.Password)
+        </div>
+      
+        <div><button type="submit" class="btn btn-danger m-2">Log in</button></div>
+       
+    }

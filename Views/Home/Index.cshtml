@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<Assignment.Entities.EmployeeDetail>
+@{
+}
+<style>
+  table,th,td{
+    border:1px solid green;
+  }
+  .center{
+    margin-left:auto;
+    margin-right:auto;
+  }
+</style>
+<div class="text-center">
+  <h3>
+ List of Employees
+  </h3>
+ 
+</div>
+<table class="center">
+    <thead>
+        <tr>
+            <th>
+                Employee_Name
+                </th>
+                 <th>
+                Age
+                </th>
+                 <th>
+                Salary
+                </th>
+                 <th>
+                Designation
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+ @foreach(var prod in Model)
+    {
+          <tr>
+            <td>
+                @prod.Name;
+                </td>
+                <td>
+                    @prod.Age;
+                    </td>
+                      <td>
+                    @prod.Salary;
+                    </td>
+                      <td>
+                    @prod.Designation;
+                    </td>
+            </tr>
+    }
+    </tbody>
+        </table>
