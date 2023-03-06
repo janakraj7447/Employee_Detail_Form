@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Assignment.Models;
 using Assignment.Entities;
 
+
 namespace Assignment.Controllers;
 
 public class HomeController : Controller
@@ -18,7 +19,9 @@ public class HomeController : Controller
     // {
     //     return View();
     // }
-
+public IActionResult EmployeeDetails(){
+    return View();
+}
   public IActionResult Index()
     {
     //      var model = new List<UserModel>();
@@ -48,10 +51,10 @@ public IActionResult Employee()
         }
         return View();
     }
-        public IActionResult AddEmployee(UserModel employeeModel)
-    {
-        using (var context=new EmployeeDBContext())
-        {
+    //     public IActionResult AddEmployee(UserModel employeeModel)
+    // {
+    //     using (var context=new EmployeeDBContext())
+    //     {
             //  LoginModel=new EmployeeModel();
             // // employee.FirstName=employeeModel.FirstName;
             // // employee.Name=employeeModel.Name;
@@ -61,10 +64,38 @@ public IActionResult Employee()
             // employee.Contact=employeeModel.Contact;
             // context.Forms.Add(employee);
             // context.SaveChanges();
+    //     }
+    //     return RedirectToAction(actionName: "Index", controllerName: "Home");
+    //     // return View();
+    // }
+
+      [HttpPost]
+        public IActionResult AddEmployee(EmployeeDetailsModel EmployeeDetails)
+    {
+        using (var context=new EmployeeDBContext())
+        {
+            EmployeeDetail Employee=new EmployeeDetail();
+            Employee.Name=EmployeeDetails.Name;
+            Employee.Age=EmployeeDetails.Age;
+            Employee.Salary=EmployeeDetails.salary;
+            Employee.Designation=EmployeeDetails.Designation;
+            // employee.ConfirmPassword=employee.ConfirmPassword;
+            // employee.Contact=employeeModel.Contact;
+            context.EmployeeDetails.Add(Employee);
+            context.SaveChanges();
+         
         }
         return RedirectToAction(actionName: "Index", controllerName: "Home");
         // return View();
     }
+        [HttpPost]
+public IActionResult Afterlogin()
+{
+    //handle your search stuff here...
+    return RedirectToAction("Index", "Home");
+}
+
+
     public IActionResult Privacy()
     {
         return View();

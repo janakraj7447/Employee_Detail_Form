@@ -1,0 +1,56 @@
+@model EmployeeDetailsModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="text">
+    <h6 style="text-align: center;">Enter the details of employee you want to add</details></h6>
+    @using(Html.BeginForm("AddEmployee","Home",FormMethod.Post,new {id="formRegistration"}))
+    {
+<div class="form-group">
+   <label for="First Name" class="col-md-3 control-label">First Name</label>
+    <div class="col-md-12">
+      @Html.TextBoxFor(x => x.Name, "", new { @class = "form-control", placeholder = "First Name" })
+    @* @Html.ValidationMessageFor(x => x.FirstName, "Please enter First Name", new { @class = "text-success", style = "display:none" }) *@
+   @Html.ValidationMessageFor(x => x.Name)
+   </div>
+  </div>
+
+<div class="form-group">
+   <label for="Email" class="col-md-3 control-label">Age</label>
+<div class="col-md-12">
+   @Html.TextBoxFor(x => x.Age, "", new { @class = "form-control", placeholder = "Age" })
+   @* @Html.ValidationMessageFor(x => x.Email, "Please enter the Email", new { @class = "text-danger", style = "display:none" }) *@
+   @Html.ValidationMessageFor(x => x.Age)
+   </div>
+</div>
+<br />
+ <div class="form-group">
+   <label for="text" class="col-md-3 control-label">Salary</label>
+<div class="col-md-12">
+   @Html.PasswordFor(x => x.salary, new { @class = "form-control", placeholder = "Password" })
+   @* @Html.ValidationMessageFor(x => x.Password, "Please enter Password", new { @class = "text-danger", style ="display:none" }) *@
+   @Html.ValidationMessageFor(x => x.salary)
+</div>
+</div>
+<br />
+<div class="form-group">
+   <label for="First Name" class="col-md-3 control-label">Designation</label>
+    <div class="col-md-12">
+      @Html.TextBoxFor(x => x.Designation, "", new { @class = "form-control", placeholder = "Designation" })
+    @* @Html.ValidationMessageFor(x => x.FirstName, "Please enter First Name", new { @class = "text-success", style = "display:none" }) *@
+   @Html.ValidationMessageFor(x => x.Designation)
+   </div>
+  </div>
+
+
+<div class="form-group">
+   <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+   <br />
+<!-- Button -->
+<div class="col-md-offset-3 col-md-9">
+   <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Submit</button>
+   <span style="margin-left:8px;"></span>
+</div>
+</div>
+    }
